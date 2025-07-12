@@ -46,7 +46,7 @@ export default function Templates() {
 							placeholder="Search for the perfect meme template..."
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="h-12 rounded-md text-base border-2 border-border focus:border-primary/50 bg-card/50 backdrop-blur-sm w-full"
+							className="h-10 rounded-md text-base border-2 border-border focus:border-primary/50 bg-card/50 backdrop-blur-sm w-full"
 						/>
 					</div>
 
@@ -63,7 +63,7 @@ export default function Templates() {
 							href={`/template/${template.id}`}
 							className="group cursor-pointer"
 						>
-							<div className="relative overflow-hidden rounded-md bg-card border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 hover:scale-[1.02]">
+							<div className="relative overflow-hidden rounded-md bg-card border-2 border-border hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
 								<div className="aspect-square overflow-hidden">
 									<img
 										src={template.image}
@@ -91,7 +91,7 @@ export default function Templates() {
 						<button
 							disabled={page === 1}
 							onClick={() => setPage(page - 1)}
-							className="px-3 py-1 rounded-md border border-border bg-card text-foreground disabled:opacity-50"
+							className="px-3 py-1 cursor-pointer rounded-md border border-border bg-card text-foreground disabled:opacity-50"
 						>
 							Prev
 						</button>
@@ -107,7 +107,7 @@ export default function Templates() {
 						<button
 							disabled={page === totalPages}
 							onClick={() => setPage(page + 1)}
-							className="px-3 py-1 rounded-md border border-border bg-card text-foreground disabled:opacity-50"
+							className="px-3 py-1 cursor-pointer rounded-md border border-border bg-card text-foreground disabled:opacity-50"
 						>
 							Next
 						</button>
