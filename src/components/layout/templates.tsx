@@ -10,17 +10,11 @@ import { memeTemplates } from "@/config/meme";
 
 export default function Templates() {
 	const [searchTerm, setSearchTerm] = useState("");
-	const [selectedCategory, setSelectedCategory] = useState("all");
 	const [page, setPage] = useState(1);
 	const templatesPerPage = 8;
 
 	const filteredTemplates = memeTemplates.filter((template) => {
-		const matchesSearch = template.name
-			.toLowerCase()
-			.includes(searchTerm.toLowerCase());
-		const matchesCategory =
-			selectedCategory === "all" || template.category === selectedCategory;
-		return matchesSearch && matchesCategory;
+		return template.name.toLowerCase().includes(searchTerm.toLowerCase());
 	});
 
 	// Pagination logic
@@ -30,10 +24,10 @@ export default function Templates() {
 		page * templatesPerPage,
 	);
 
-	// Reset to page 1 when search or filter changes
+	// Reset to page 1 when search changes
 	React.useEffect(() => {
 		setPage(1);
-	}, [searchTerm, selectedCategory]);
+	}, [searchTerm]);
 
 	return (
 		<div>

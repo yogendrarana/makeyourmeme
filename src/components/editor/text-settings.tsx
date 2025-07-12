@@ -36,6 +36,7 @@ export interface TextElement {
 	textAlign: string;
 	strokeWidth: number;
 	strokeColor: string;
+	fontStretch?: number; // 100 = normal, 50 = condensed, 200 = expanded
 }
 
 interface TextSettingsProps {
@@ -205,6 +206,31 @@ export default function TextSettings({
 								}
 								min={0}
 								max={8}
+								step={1}
+								className="w-full"
+							/>
+						</div>
+
+						{/* Text Width (Font Stretch) */}
+						<div className="space-y-3">
+							<div className="flex items-center justify-between">
+								<Label className="text-sm font-medium text-foreground">
+									Text Width
+								</Label>
+								<Badge
+									variant="secondary"
+									className="bg-accent text-accent-foreground"
+								>
+									{selectedText.fontStretch ?? 100}%
+								</Badge>
+							</div>
+							<Slider
+								value={[selectedText.fontStretch ?? 100]}
+								onValueChange={([v]) =>
+									onUpdate(selectedText.id, { fontStretch: v })
+								}
+								min={50}
+								max={200}
 								step={1}
 								className="w-full"
 							/>
