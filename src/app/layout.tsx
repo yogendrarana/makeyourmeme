@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 import "../styles/globals.css";
 import Providers from "@/components/providers";
@@ -23,6 +24,7 @@ export default function RootLayout({
 			>
 				<Providers>{children}</Providers>
 			</body>
+			<Analytics />
 		</html>
 	);
 }

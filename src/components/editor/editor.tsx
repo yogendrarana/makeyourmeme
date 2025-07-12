@@ -224,7 +224,14 @@ export default function Editor({ templateId }: EditorProps) {
 
 					// Font stretch/fatness: scale X axis
 					const stretch = (element.fontStretch ?? 100) / 100;
-					ctx.setTransform(stretch, 0, 0, 1, element.x - element.x * stretch, 0);
+					ctx.setTransform(
+						stretch,
+						0,
+						0,
+						1,
+						element.x - element.x * stretch,
+						0,
+					);
 
 					// Draw stroke first
 					if (element.strokeWidth > 0) {
@@ -291,9 +298,9 @@ export default function Editor({ templateId }: EditorProps) {
 		setTextElements((prev) => {
 			const updated = prev.filter((el) => el.id !== id);
 			// If the deleted element was selected, select the first remaining
-		if (selectedElementId === id) {
+			if (selectedElementId === id) {
 				setSelectedElementId(updated[0].id);
-		}
+			}
 			return updated;
 		});
 	};
@@ -448,33 +455,33 @@ export default function Editor({ templateId }: EditorProps) {
 			/>
 
 			<div className="py-8 grid grid-cols-1 lg:grid-cols-3 gap-4">
-					{/* Canvas */}
-					<div className="lg:col-span-2">
+				{/* Canvas */}
+				<div className="lg:col-span-2">
 					<div className="p-2 bg-card rounded-md border border-border">
-							<div
-								ref={canvasContainerRef}
-								className="relative inline-block cursor-crosshair"
-							>
-								<canvas
-									ref={canvasRef}
+						<div
+							ref={canvasContainerRef}
+							className="relative inline-block cursor-crosshair"
+						>
+							<canvas
+								ref={canvasRef}
 								className="max-w-full h-auto rounded-md shadow-lg"
-									onMouseDown={handleCanvasMouseDown}
-									onMouseMove={handleCanvasMouseMove}
-									onMouseUp={handleCanvasMouseUp}
-									onMouseLeave={handleCanvasMouseUp}
-								/>
+								onMouseDown={handleCanvasMouseDown}
+								onMouseMove={handleCanvasMouseMove}
+								onMouseUp={handleCanvasMouseUp}
+								onMouseLeave={handleCanvasMouseUp}
+							/>
 
-								{/* Hidden image for loading */}
-								<img
-									src={template.image}
-									alt={template.name}
-									className="hidden"
-									crossOrigin={customImageData ? undefined : "anonymous"}
-									onLoad={() => setImageLoaded(true)}
-								/>
-							</div>
+							{/* Hidden image for loading */}
+							<img
+								src={template.image}
+								alt={template.name}
+								className="hidden"
+								crossOrigin={customImageData ? undefined : "anonymous"}
+								onLoad={() => setImageLoaded(true)}
+							/>
 						</div>
 					</div>
+				</div>
 
 				{/* text settings */}
 				<TextSettings
